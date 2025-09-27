@@ -38,29 +38,23 @@ python main.py
 ---
 
 ## 📊 成果展示
-- 匯率 CSV 範例
+### 匯率 CSV 範例
 |    日期    |  匯率  |
-| :--------: | :----: |
+| ---------- | ------ |
 | 2025/09/10 | 30.310 |
 | 2025/09/11 | 30.344 |
 | 2025/09/12 | 30.246 |
+| ...        | ...    |
 
-
-日期	匯率
-2025/09/10	30.31
-2025-09-11	32.48
-2025-09-12	32.51
-...	...
-
-- 匯率走勢圖
-<img width="1200" height="600" alt="sample_output" src="https://github.com/user-attachments/assets/75c1999b-950b-4a36-8f9e-5ccad35418fa" />
+### 匯率走勢圖
+<img width="800" alt="sample_output" src="https://github.com/user-attachments/assets/75c1999b-950b-4a36-8f9e-5ccad35418fa" />
 
 ## 🔮 未來改進方向
-
-支援多幣別查詢（如 NTD/EUR, NTD/JPY）
-自動排程每日更新
-提供 Web 版查詢介面（Flask / FastAPI）
+- 支援多幣別查詢（如 NTD/EUR, NTD/JPY）
+- 自動排程每日更新
+- 提供 Web 版查詢介面（Flask / FastAPI）
 
 ## 👨‍💻 作者
-開發者：你的名字 / GitHub ID
-聯繫方式：Email 或 LinkedIn（選填）
+- 開發者：胡智勝 / tom1835566
+- 聯繫方式：[tom1835566@gmail.com](mailto:tom1835566@gmail.com) ｜ [LinkedIn](https://www.linkedin.com/in/智勝-胡-9590b7386)
+
