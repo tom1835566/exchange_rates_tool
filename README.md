@@ -29,11 +29,11 @@
 ---
 
 ## 🤔 技術選擇考量
-- **為何選擇爬蟲而非API?**
+- **為何選擇爬蟲而非API?**<br>
   央行未提供公開API,因此採用BeautifulSoup解析HTML表格資料
-- **為何使用 pandas?**
+- **為何使用 pandas?**<br>
   方便後續擴充為時間序列分析
-- **圖表為何選matplotlib?**
+- **圖表為何選matplotlib?**<br>
   輕量、可客製化程度高,適合快速產出靜態圖表
 
 ---
@@ -106,11 +106,11 @@ pytest test_main.py -v
 ## 🐛 開發過程中遇到的問題
 
 ### 問題1: 資料順序錯誤
-**現象**: 爬取的資料是由新到舊,但繪圖需要由舊到新
+**現象**: 爬取的資料是由新到舊,但繪圖需要由舊到新<br>
 **解決**: 使用 `[::-1]` 反轉串列順序
 
 ### 問題2: Y軸刻度過於密集
-**現象**: 匯率變化幅度小(如30.2~30.4),預設刻度不易觀察
+**現象**: 匯率變化幅度小(如30.2~30.4),預設刻度不易觀察<br>
 **解決**:
 ```python
 y_min = min(result["匯率"]) - 0.05
@@ -120,11 +120,11 @@ plt.yticks(np.arange(round(y_min, 2), round(y_max + 0.05, 2), 0.05))
 動態調整Y軸範圍與間距,讓趨勢更明顯
 
 ### 問題3: 中文檔名在某些系統會亂碼
-**現象**: Windows與Mac對中文編碼處理不同,CSV可能出現亂碼
+**現象**: Windows與Mac對中文編碼處理不同,CSV可能出現亂碼<br>
 **解決**: CSV存檔時加入 `encoding="utf-8-sig"` 確保跨平台相容
 
 ### 問題4: 網路不穩定時程式會崩潰
-**現象**: 爬蟲過程若遇到網路中斷,程式直接報錯退出
+**現象**: 爬蟲過程若遇到網路中斷,程式直接報錯退出<br>
 **解決**:
 ```python
 try:
@@ -169,7 +169,7 @@ except requests.exceptions.RequestException as e:
 | ...        | ...    |
 
 ### 匯率走勢圖
-<img width="800" alt="sample_output" src="https://github.com/user-attachments/assets/75c1999b-950b-4a36-8f9e-5ccad35418fa" />
+![匯率走勢圖](assets/sample_output.png)
 
 ---
 

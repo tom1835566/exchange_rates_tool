@@ -42,4 +42,5 @@ htmlcov/
 # 可選:是否要忽略產出的檔案
 exchange_rates.csv
 sample_output.png
-程式執行輸出.jpg
+程式執行輸出.jpgsample_output.png 
+exchange_rates.csv 
