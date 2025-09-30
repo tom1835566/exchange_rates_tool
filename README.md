@@ -84,6 +84,7 @@ pip install -r requirements.txt
 # 5. 執行程式
 python main.py
 ```
+
 ---
 
 ## 🧪 執行測試
@@ -94,6 +95,7 @@ pip install pytest
 # 執行單元測試
 pytest test_main.py -v
 ```
+
 測試涵蓋：
 - ✅ 正常資料爬取流程
 - ✅ 網路錯誤處理
@@ -139,7 +141,7 @@ except requests.exceptions.RequestException as e:
 ## 📊 成果展示
 
 ### 程式執行輸出
-```
+```text
 🔍 正在爬取央行匯率資料...
 ✅ 已儲存至 exchange_rates.csv
 ✅ 圖表已儲存至 sample_output.png
@@ -180,7 +182,7 @@ except requests.exceptions.RequestException as e:
 ---
 
 ## 🔮 未來改進方向
-- [ ]  支援多幣別查詢(EUR, JPY, CNY等)
+- [ ] 支援多幣別查詢(EUR, JPY, CNY等)
 - [ ] 整合 LINE Notify 推播
 - [ ] 部署為 Web API (FastAPI)
 - [ ] 加入技術指標分析(移動平均線)
@@ -192,9 +194,9 @@ except requests.exceptions.RequestException as e:
 MIT License
 
 ## 👨‍💻 作者
-- **開發者**：胡智勝 / tom1835566
-- **Email**：[tom1835566@gmail.com](mailto:tom1835566@gmail.com)
-- **LinkedIn**：[智勝-胡](https://www.linkedin.com/in/智勝-胡-9590b7386)
+- **開發者**: 胡智勝 / tom1835566
+- **Email**: [tom1835566@gmail.com](mailto:tom1835566@gmail.com)
+- **LinkedIn**: [智勝-胡](https://www.linkedin.com/in/智勝-胡-9590b7386)
 
 ## 🙏 致謝
-- 資料來源:[中華民國中央銀行](https://www.cbc.gov.tw/tw/lp-645-1.html)
+- 資料來源: [中華民國中央銀行](https://www.cbc.gov.tw/tw/lp-645-1.html)
