@@ -13,7 +13,7 @@ def fetch_exchange_rates(url):
         r.raise_for_status()  # 檢查HTTP錯誤
     except requests.exceptions.RequestException as e:
         print(f"❌ 網路請求失敗: {e}")
-        sys.exit(1)
+        sys.exit(1)  # 立即停止程式，返回錯誤代碼 1
 
     dateList = []
     exchangeList = []
@@ -55,7 +55,7 @@ def plot_exchange_rate(df, filename="sample_output.png"):
     plt.title("NTD/USD Exchange Rate Trend (Last 20 Days)", fontsize=16, fontweight='bold')
     plt.xlabel("Date", fontsize=12)
     plt.ylabel("Exchange Rate (TWD)", fontsize=12)
-    plt.xticks(rotation=45, ha='right')
+    plt.xticks(rotation=45, ha='right') # ha 文字水平對齊方式
 
     # 動態調整Y軸
     y_min = min(df["匯率"]) - 0.05
@@ -65,7 +65,7 @@ def plot_exchange_rate(df, filename="sample_output.png"):
 
     plt.grid(True, alpha=0.3)
     plt.tight_layout()
-    plt.savefig(filename, dpi=150)
+    plt.savefig(filename, dpi=150) # dpi 圖片解析度，每英吋有 n 個像素點，預設為 100
     plt.close()
     print(f"✅ 圖表已儲存至 {filename}")
 
@@ -88,15 +88,16 @@ def main():
     print(f"📉 最低匯率: {df['匯率'].min():.3f} (於 {df.loc[df['匯率'].idxmin(), '日期']})")
     print(f"📈 最高匯率: {df['匯率'].max():.3f} (於 {df.loc[df['匯率'].idxmax(), '日期']})")
 
-    # 顯示與上週相比的變化
-    last_rate = rates[-1]
-    week_ago_rate = rates[-5] if len(rates) >= 5 else rates[0]
-    change = ((last_rate - week_ago_rate) / week_ago_rate) * 100
-    print(f"📊 相較一週前變化: {change:+.2f}%")
+    # 趨勢分析
+    if len(rates) >= 5:
+        last_rate = rates[-1]
+        week_ago_rate = rates[-5]
+        change = ((last_rate - week_ago_rate) / week_ago_rate) * 100
 
-    # 當匯率低於某閾值時發送通知
-    if last_rate < 30.0:
-        print("🔔 匯率低於30元,適合換匯!")
+        trend = "上漲" if change > 0 else "下跌"
+        print(f"\n📊 近期趨勢: 相較5個交易日前{trend} {abs(change):.2f}%")
+    else:
+        print(f"\n⚠️  資料僅有 {len(rates)} 筆，無法計算趨勢變化")
 
 if __name__ == "__main__":
     main()

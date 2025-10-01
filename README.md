@@ -23,8 +23,8 @@
 - ✅ 動態產生趨勢圖
 - ✅ 自動計算統計數據(平均/最高/最低)
 - ✅ 錯誤處理機制
-- ✅ 匯率變化分析(與一週前比較)
-- ✅ 換匯時機提醒
+- ✅ 匯率趨勢分析(與5個交易日前比較)
+- ✅ 完整單元測試
 
 ---
 
@@ -96,6 +96,17 @@ pip install pytest
 pytest test_main.py -v
 ```
 
+### 測試結果
+```text
+collected 3 items
+
+test_main.py::test_fetch_exchange_rates_success PASSED      [ 33%]
+test_main.py::test_fetch_exchange_rates_network_error PASSED [ 66%]
+test_main.py::test_fetch_exchange_rates_empty_table PASSED   [100%]
+
+========================== 3 passed in 1.37s ===========================
+```
+
 測試涵蓋：
 - ✅ 正常資料爬取流程
 - ✅ 網路錯誤處理
@@ -136,6 +147,10 @@ except requests.exceptions.RequestException as e:
 ```
 加入 try-except 錯誤處理機制,並設定10秒timeout避免無限等待
 
+### 問題5: 趨勢分析的準確性
+**現象**: 原本使用固定閾值(30.0)判斷換匯時機,但數值寫死且不符合實際匯率水準<br>
+**解決**: 改為計算5個交易日的變化百分比,提供更客觀的趨勢資訊,避免主觀判斷
+
 ---
 
 ## 📊 成果展示
@@ -157,7 +172,8 @@ except requests.exceptions.RequestException as e:
 📈 平均匯率: 32.131
 📉 最低匯率: 32.098 (於 2025/09/28)
 📈 最高匯率: 32.156 (於 2025/09/29)
-📊 相較一週前變化: +0.34%
+
+📊 近期趨勢: 相較5個交易日前上漲 0.34%
 ```
 
 ### 匯率 CSV 範例
@@ -178,6 +194,7 @@ except requests.exceptions.RequestException as e:
 - 學會動態調整圖表參數提升可讀性
 - 實踐錯誤處理確保程式穩定性
 - 體會單元測試對程式品質的重要性
+- 了解 Mock 在測試中的應用
 
 ---
 
